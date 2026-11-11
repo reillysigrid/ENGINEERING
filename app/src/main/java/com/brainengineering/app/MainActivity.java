@@ -63,7 +63,7 @@ public final class MainActivity extends Activity {
         web.setWebViewClient(new WebViewClient() {
             @Override public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest req) {
                 Uri url = req.getUrl();
-                if ("https".equalsIgnoreCase(url.getScheme()) && HOST.equalsIgnoreCase(url.getHost())) {
+                if ("https".equalsIgnoreCase(url.getScheme()) && (HOST.equalsIgnoreCase(url.getHost()) || "brainengineering.es".equalsIgnoreCase(url.getHost()) || "www.brainengineering.es".equalsIgnoreCase(url.getHost()))) {
                     return false;
                 }
                 external(url);
