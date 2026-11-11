@@ -1,1 +1,7 @@
-<resources><string name="app_name">BrainEngineering</string><string name="offline">Pas de connexion. Vérifiez votre connexion et réessayez.</string><string name="retry">Réessayer</string><string name="file_error">Sélection de fichiers indisponible.</string><string name="external_error">Impossible d'ouvrir le lien.</string></resources>
+<resources>
+  <string name="app_name">BrainEngineering</string>
+  <string name="offline">Pas de connexion. Vérifiez votre connexion et réessayez.</string>
+  <string name="retry">Réessayer</string>
+  <string name="file_error">Sélection de fichiers indisponible.</string>
+  <string name="external_error">Impossible d\'ouvrir le lien.</string>
+</resources>
