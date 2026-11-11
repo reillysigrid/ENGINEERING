@@ -48,15 +48,14 @@ jobs:
             adb shell am start -W -n com.brainengineering.app/.MainActivity
             sleep 8
             adb exec-out screencap -p > brain-home.png
-            dims=$(adb shell wm size | grep 'Physical size' | tail -1 | awk '{print $3}' | tr -d '\r')
-            width=$(echo "$dims" | cut -dx -f1)
-            height=$(echo "$dims" | cut -dx -f2)
-            adb shell input tap $((width/2)) $((height-190))
+            adb shell input tap 540 2050
             sleep 2
             adb exec-out screencap -p > brain-plan.png
-            adb shell input tap $((width*5/6)) $((height-190))
+            if cmp -s brain-home.png brain-plan.png; then echo 'Planner tab did not change screen'; exit 1; fi
+            adb shell input tap 900 2050
             sleep 2
             adb exec-out screencap -p > brain-quiz.png
+            if cmp -s brain-plan.png brain-quiz.png; then echo 'Quiz tab did not change screen'; exit 1; fi
             adb shell dumpsys activity activities | grep -F 'com.brainengineering.app'
             adb logcat -d -s AndroidRuntime:E > crash.log
             if grep -q 'FATAL EXCEPTION' crash.log; then cat crash.log; exit 1; fi
