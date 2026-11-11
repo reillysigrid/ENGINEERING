@@ -51,11 +51,11 @@ jobs:
             adb shell wm size
             adb shell uiautomator dump /sdcard/window.xml
             adb pull /sdcard/window.xml ui-window.xml
-            adb shell input tap 540 2050
+            adb shell input tap 540 2115
             sleep 2
             adb exec-out screencap -p > brain-plan.png
             if cmp -s brain-home.png brain-plan.png; then echo 'Planner tab did not change screen'; exit 1; fi
-            adb shell input tap 900 2050
+            adb shell input tap 900 2115
             sleep 2
             adb exec-out screencap -p > brain-quiz.png
             if cmp -s brain-plan.png brain-quiz.png; then echo 'Quiz tab did not change screen'; exit 1; fi
