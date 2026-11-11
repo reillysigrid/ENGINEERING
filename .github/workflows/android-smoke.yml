@@ -48,6 +48,9 @@ jobs:
             adb shell am start -W -n com.brainengineering.app/.MainActivity
             sleep 8
             adb exec-out screencap -p > brain-home.png
+            adb shell wm size
+            adb shell uiautomator dump /sdcard/window.xml
+            adb pull /sdcard/window.xml ui-window.xml
             adb shell input tap 540 2050
             sleep 2
             adb exec-out screencap -p > brain-plan.png
@@ -69,5 +72,6 @@ jobs:
             brain-home.png
             brain-plan.png
             brain-quiz.png
+            ui-window.xml
             crash.log
           if-no-files-found: ignore
