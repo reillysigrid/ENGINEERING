@@ -1,0 +1,1 @@
+<resources><string name="app_name">BrainEngineering</string><string name="offline">No internet connection. Connect and retry.</string><string name="retry">Retry</string><string name="file_error">File selection unavailable</string><string name="external_error">Cannot open link</string></resources>
