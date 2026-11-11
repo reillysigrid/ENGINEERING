@@ -56,11 +56,25 @@ public final class MainActivity extends Activity {
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
         settings.setJavaScriptCanOpenWindowsAutomatically(false);
         settings.setMediaPlaybackRequiresUserGesture(true);
-        settings.setSafeBrowsingEnabled(true);
+        if (android.os.Build.VERSION.SDK_INT >= 26) {
+            settings.setSafeBrowsingEnabled(true);
+        }
         CookieManager.getInstance().setAcceptCookie(true);
         CookieManager.getInstance().setAcceptThirdPartyCookies(web, false);
 
         web.setWebViewClient(new WebViewClient() {
+            // Android 6 and 7 may call this legacy navigation callback.
+            @Override public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                Uri uri = Uri.parse(url);
+                if ("https".equalsIgnoreCase(uri.getScheme()) &&
+                        (HOST.equalsIgnoreCase(uri.getHost()) ||
+                         "brainengineering.es".equalsIgnoreCase(uri.getHost()) ||
+                         "www.brainengineering.es".equalsIgnoreCase(uri.getHost()))) {
+                    return false;
+                }
+                external(uri);
+                return true;
+            }
             @Override public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest req) {
                 Uri url = req.getUrl();
                 if ("https".equalsIgnoreCase(url.getScheme()) && (HOST.equalsIgnoreCase(url.getHost()) || "brainengineering.es".equalsIgnoreCase(url.getHost()) || "www.brainengineering.es".equalsIgnoreCase(url.getHost()))) {
