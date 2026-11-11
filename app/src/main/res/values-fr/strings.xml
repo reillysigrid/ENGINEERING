@@ -1,7 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">BrainEngineering</string>
-  <string name="offline">Pas de connexion. Vérifiez votre connexion et réessayez.</string>
-  <string name="retry">Réessayer</string>
-  <string name="file_error">Sélection de fichiers indisponible.</string>
-  <string name="external_error">Impossible d\'ouvrir le lien.</string>
+    <string name="app_name">BrainEngineering</string>
+    <string name="contact">Contact</string>
+    <string name="contact_subject">BrainEngineering · Question académique</string>
+    <string name="tab_portal">Portail</string>
+    <string name="tab_planner">Mon plan</string>
+    <string name="tab_practice">Exercices</string>
+    <string name="file_error">Sélection de fichiers indisponible.</string>
+    <string name="external_error">Impossible d’ouvrir ce lien.</string>
+    <string name="offline">Le portail ne répond pas. Vérifiez votre connexion et réessayez.</string>
+    <string name="offline_tools">Le planning et les exercices fonctionnent sans connexion.</string>
+    <string name="retry">Réessayer</string>
+    <string name="planner_title">Votre plan de révision</string>
+    <string name="planner_subtitle">Découpez les sujets en tâches simples et apprenez à votre rythme.</string>
+    <string name="goals">Objectifs de la semaine</string>
+    <string name="goal_hint">Ex. : Résoudre 5 exercices de chimie</string>
+    <string name="add_goal">Ajouter un objectif</string>
+    <string name="goal_required">Saisissez un objectif.</string>
+    <string name="goal_limit">Limite de 30 objectifs. Terminez ou supprimez les anciens.</string>
+    <string name="remove_goal">Supprimer l’objectif</string>
+    <string name="goal_count">%1$d objectifs sur %2$d terminés</string>
+    <string name="empty_goals">Pas encore d’objectifs. Ajoutez-en un.</string>
+    <string name="timer_title">Concentration · 25 min</string>
+    <string name="timer_description">Travaillez sans distractions. Vous pouvez mettre en pause.</string>
+    <string name="start">Démarrer</string>
+    <string name="reset">Réinitialiser</string>
+    <string name="pause">Pause</string>
+    <string name="timer_finished">Les 25 minutes de concentration sont terminées.</string>
+    <string name="formulas_title">Formules scientifiques</string>
+    <string name="formulas_note">Vérifiez toujours les unités et les hypothèses du problème.</string>
+    <string name="local_only">Ce plan est enregistré uniquement sur cet appareil, sans compte ni sauvegarde en ligne.</string>
+    <string name="practice_title">Défis scientifiques</string>
+    <string name="practice_subtitle">Huit questions expliquées pour raisonner et apprendre sans connexion.</string>
+    <string name="practice_private">Les scores ne sont ni collectés ni transmis. Ils se réinitialisent quand vous quittez l’application.</string>
+    <string name="next">Question suivante</string>
+    <string name="restart">Recommencer</string>
+    <string name="question_count">Question %1$d/%2$d · Score : %3$d</string>
+    <string name="correct">Bonne réponse !</string>
+    <string name="incorrect">Pas tout à fait.</string>
+    <string name="final_score">Résultat final : %1$d/%2$d.</string>
 </resources>
