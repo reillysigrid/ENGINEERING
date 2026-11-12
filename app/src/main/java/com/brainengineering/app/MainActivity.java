@@ -121,7 +121,9 @@ public final class MainActivity extends Activity {
         practiceTab.setOnClickListener(v -> showTab(2));
         root.addView(nav, new LinearLayout.LayoutParams(-1, dp(62)));
 
-        showTab(savedInstanceState == null ? 0 : savedInstanceState.getInt("tab", 0));
+        // Start with an always-available native learning screen on Samsung and other devices.
+        // The Wix portal remains one tap away and loads when connected.
+        showTab(savedInstanceState == null ? 1 : savedInstanceState.getInt("tab", 1));
     }
 
     private LinearLayout.LayoutParams weighted() {

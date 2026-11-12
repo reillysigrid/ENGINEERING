@@ -19,6 +19,8 @@ jobs:
             image: default
           - api: 35
             image: google_apis
+          - api: 36
+            image: google_apis
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -48,10 +50,10 @@ jobs:
             adb shell am start -W -n com.brainengineering.app/.MainActivity
             sleep 14
             adb exec-out screencap -p > brain-home.png
-            adb shell input tap 540 2115
-            sleep 2
+            adb shell input tap 180 2115
+            sleep 4
             adb exec-out screencap -p > brain-plan.png
-            if cmp -s brain-home.png brain-plan.png; then echo 'Planner tab did not change screen'; exit 1; fi
+            if cmp -s brain-home.png brain-plan.png; then echo 'Portal tab did not change screen'; exit 1; fi
             adb shell input tap 900 2115
             sleep 2
             adb exec-out screencap -p > brain-quiz.png
@@ -59,7 +61,7 @@ jobs:
             adb shell dumpsys activity activities | grep -F 'com.brainengineering.app'
             adb logcat -d -s AndroidRuntime:E > crash.log
             if grep -q 'FATAL EXCEPTION' crash.log; then cat crash.log; exit 1; fi
-            echo 'Home, Planner and Quiz smoke screens captured; no AndroidRuntime fatal crash.'
+            echo 'Native launch, Portal and Quiz smoke screens captured; no AndroidRuntime fatal crash.'
       - name: Screenshots and diagnostic logs
         if: always()
         uses: actions/upload-artifact@v4
