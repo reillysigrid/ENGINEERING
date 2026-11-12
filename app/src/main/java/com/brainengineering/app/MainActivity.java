@@ -58,6 +58,13 @@ public final class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(NAVY);
         getWindow().setNavigationBarColor(NAVY);
+        // Android 15/16 enforce transparent status bars for API 36 apps.
+        // Our page background is light: show dark status icons for contrast.
+        if (Build.VERSION.SDK_INT >= 35 && getWindow().getInsetsController() != null) {
+            getWindow().getInsetsController().setSystemBarsAppearance(
+                    android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                    android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS);
+        }
 
         LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
