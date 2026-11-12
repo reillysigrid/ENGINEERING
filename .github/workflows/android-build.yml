@@ -2,6 +2,8 @@ name: BrainEngineering Android
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 jobs:
   build:
@@ -22,7 +24,7 @@ jobs:
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null || true
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'platforms;android-36' 'build-tools;36.0.0'
       - name: Compile Android APK and AAB
-        run: gradle --no-daemon :app:assembleDebug :app:bundleRelease
+        run: gradle --no-daemon :app:assembleDebug :app:assembleRelease :app:bundleRelease
       - uses: actions/upload-artifact@v4
         with:
           name: BrainEngineering-APK-para-Android
@@ -31,3 +33,14 @@ jobs:
         with:
           name: BrainEngineering-AAB-SIN-FIRMAR
           path: app/build/outputs/bundle/release/app-release.aab
+
+      - name: Package unsigned release APK (sign privately, never in CI)
+        uses: actions/upload-artifact@v4
+        with:
+          name: BrainEngineering-APK-RELEASE-SIN-FIRMAR
+          path: app/build/outputs/apk/release/app-release-unsigned.apk
+      - name: Export build-tools signing helper for local verification
+        uses: actions/upload-artifact@v4
+        with:
+          name: Android-sdk36-apksigner-helper
+          path: /usr/local/lib/android/sdk/build-tools/36.0.0/lib/apksigner.jar
