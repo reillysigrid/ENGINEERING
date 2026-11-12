@@ -63,7 +63,11 @@ public final class MainActivity extends Activity {
         root.setOrientation(LinearLayout.VERTICAL);
         root.setBackgroundColor(CREAM);
         root.setFitsSystemWindows(true);
+        // Keep the keyboard closed until the learner taps the goal field.
+        root.setFocusableInTouchMode(true);
         setContentView(root);
+        getWindow().setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN |
+                android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         // Android 15+ may enforce edge-to-edge. Keep all interactive controls
         // inside the system bars without relying on AndroidX libraries.
         root.setOnApplyWindowInsetsListener((view, insets) -> {
@@ -123,6 +127,7 @@ public final class MainActivity extends Activity {
 
         // Start with an always-available native learning screen on Samsung and other devices.
         // The Wix portal remains one tap away and loads when connected.
+        root.requestFocus();
         showTab(savedInstanceState == null ? 1 : savedInstanceState.getInt("tab", 1));
     }
 
